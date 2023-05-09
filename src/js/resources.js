@@ -1,13 +1,15 @@
 import { ImageSource, Sound, Resource, Loader } from "excalibur";
-import fishImage from "../images/bone.png";
+import boneImage from "../images/bone.png";
 import sansImage from "../images/sans.png";
 import textImage from "../images/textbox.png";
+import playerImage from "../images/Undertale.png";
 
 const Resources = {
-  Fish: new ImageSource(fishImage),
+  Bone: new ImageSource(boneImage),
   Sans: new ImageSource(sansImage),
   Text: new ImageSource(textImage),
+  Player: new ImageSource(playerImage),
 };
-const ResourceLoader = new Loader([Resources.Fish, Resources.Sans, Resources.Text]);
+const ResourceLoader = new Loader([Resources.Bone, Resources.Sans, Resources.Text, Resources.Player]);
 
 export { Resources, ResourceLoader };

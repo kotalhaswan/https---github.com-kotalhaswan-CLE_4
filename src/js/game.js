@@ -1,33 +1,35 @@
 import { Actor, Engine, Vector, Label, Color, Font } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
+import { Player } from './player'
+import { Sans } from './sans'
 
 export class Game extends Engine {
   constructor() {
     super({ width: 640, height: 480 });
     this.start(ResourceLoader).then(() => this.startGame());
+    // this.player(ResourceLoader).then(() => this.Player());
   }
 
   startGame() {
-    const sans = new Actor();
-    sans.graphics.use(Resources.Sans.toSprite());
-    sans.pos = new Vector(300, 200);
-    sans.scale = new Vector(0.2, 0.2);
+    let player = new Player();
+    this.add(player);
+
+    let sans = new Sans();
     this.add(sans);
 
-
     for (let i = 0; i < 100; i++) {
-        let fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite());
+        let bone = new Actor()
+        bone.graphics.use(Resources.Bone.toSprite());
         // fish.pointer.useGraphicsBounds = true;
         // fish.enableCapturePointer = true;
-        fish.pos = new Vector(Math.random() * 800 , Math.random() * 600);
-        fish.vel = new Vector(Math.random() * -10 , Math.random() * 10);
-        fish.scale = new Vector(0.1, 0.1);
-        this.add(fish);
-        fish.pointer.useGraphicsBounds = true;
-        fish.enableCapturePointer = true;
-        fish.on("pointerup", function (e) {
-            fish.kill();
+        bone.pos = new Vector(Math.random() * 800 , Math.random() * 600);
+        bone.vel = new Vector(Math.random() * -10 , Math.random() * 10);
+        bone.scale = new Vector(0.1, 0.1);
+        this.add(bone);
+        bone.pointer.useGraphicsBounds = true;
+        bone.enableCapturePointer = true;
+        bone.on("pointerup", function (e) {
+            bone.kill();
         });
         }
         const textbox = new Actor();
