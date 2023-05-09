@@ -11,6 +11,12 @@ export class Game extends Engine {
   }
 
   startGame() {
+    const background = new Actor();
+    background.graphics.use(Resources.Background.toSprite());
+    background.pos = new Vector(500, 400);
+    background.scale = new Vector(3,3);
+    
+    this.add(background);
     let player = new Player();
     this.add(player);
 
@@ -37,6 +43,9 @@ export class Game extends Engine {
         textbox.pos = new Vector(320, 400);
         textbox.scale = new Vector(1,1);
         this.add(textbox);
+
+       
+        
   }
   
 }

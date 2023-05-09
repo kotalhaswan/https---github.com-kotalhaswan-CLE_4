@@ -11,4 +11,12 @@ export class Sans extends Actor {
         this.scale = new Vector(0.1, 0.1);
         
     }
+    onInitialize(){
+        this.enableCapturePointer = true
+        this.pointer.useGraphicsBounds = true
+        this.on("pointerup", (event)=>{
+            this.pos = new Vector(Math.random() * 600 , Math.random() * 200)
+        })
+    }
+    
   }
