@@ -18,7 +18,7 @@ button#excalibur-play {\r
   padding: 1rem 1.5rem 1rem 4rem;\r
   margin: 0;\r
   text-decoration: none;\r
-  background: #00b233;\r
+  background: #000000;\r
   color: #ffffff;\r
   font-family: sans-serif;\r
   font-size: 2rem;\r

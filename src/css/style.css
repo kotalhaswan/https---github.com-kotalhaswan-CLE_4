@@ -4,5 +4,6 @@ body {
     background-color:darkgray;
 }
 #excalibur-play {
-    background: rgb(0, 0, 0) !important;
+    background: rgb(255, 252, 252) !important;
+    color:black !important;
 }
