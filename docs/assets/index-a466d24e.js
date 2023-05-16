@@ -9,7 +9,7 @@
 button#excalibur-play {\r
   display: inline-block;\r
   position: relative;\r
-  z-index: 999;\r
+  z-index: 400;\r
   border-radius: 6px;\r
   border: none;\r
   /*border: 3px solid;\r
