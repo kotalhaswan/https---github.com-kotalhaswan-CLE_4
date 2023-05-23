@@ -5,6 +5,7 @@ import textImage from "../images/textbox.png";
 import playerImage from "../images/Undertale.png";
 import backgroundImage from "../images/background.png";
 import titleImage from '../images/loadingscreen.png';
+import bullet from '../images/bullet.png';
 import backgroundMusic from '../images/megalovania.mp3';
 
 const Resources = {
@@ -14,9 +15,10 @@ const Resources = {
   Player: new ImageSource(playerImage),
   Background: new ImageSource(backgroundImage),
   Title: new ImageSource(titleImage),
+  Bullet: new ImageSource(bullet),
   backgroundMusic: new Sound(backgroundMusic),
 };
-const ResourceLoader = new Loader([Resources.Bone, Resources.Sans, Resources.Text, Resources.Player, Resources.Background, Resources.backgroundMusic]);
+const ResourceLoader = new Loader([Resources.Bone, Resources.Sans, Resources.Text, Resources.Player, Resources.Background, Resources.Bullet, Resources.backgroundMusic]);
 ResourceLoader.logo = titleImage
 ResourceLoader.logoWidth = 625
 ResourceLoader.logoHeight = 299

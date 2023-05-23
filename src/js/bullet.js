@@ -1,20 +1,22 @@
 import { Actor, Vector, Input } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
-import { Player } from './player'
+import { Bone } from "./bones.js"
+import { Sans } from './sans'
 
-export class Bone extends Actor{
+export class Bullet extends Actor{
     constructor() {
         super({
-            width: Resources.Bone.width,
-            height: Resources.Bone.height
+            width: Resources.Bullet.width,
+            height: Resources.Bullet.height
         });
-        this.graphics.use(Resources.Bone.toSprite());
-        this.pos = new Vector(200, 200);
-        this.vel = new Vector(-10,1);
+        this.graphics.use(Resources.Bullet.toSprite());
+        this.pos = new Vector(220, 200);
+        this.vel = new Vector(400,3);
         this.scale = new Vector(0.1, 0.1);
     } 
         onInitialize(){
             this.on('collisionstart', (event) => this.hitSomething(event))
+            this.on('collisionstart', (event) => this.hitSans(event))
             this.pointer.useGraphicsBounds = true;
             this.enableCapturePointer = true;
             this.on("pointerup", function (e) {
@@ -23,7 +25,14 @@ export class Bone extends Actor{
         }
         hitSomething(event) {
     
-            if (event.other instanceof Player) {
+            if (event.other instanceof Bone) {
+                event.other.kill()
+            }
+        }
+
+        hitSans(event) {
+
+            if (event.other instanceof Sans) {
                 event.other.kill()
             }
         }
