@@ -20,6 +20,7 @@ export class Bone extends Actor{
             this.on("pointerup", function (e) {
               this.kill();
             });
+            
         }
         hitSomething(event) {
     

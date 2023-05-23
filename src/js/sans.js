@@ -22,9 +22,6 @@ export class Sans extends Actor {
         this.on('collisionstart', (event) => this.hitSomething(event))
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
-        this.on("pointerup", (event) => {
-            this.pos = new Vector(Math.random() * 600, Math.random() * 200)
-        })
 
     }
     hitSomething(event) {

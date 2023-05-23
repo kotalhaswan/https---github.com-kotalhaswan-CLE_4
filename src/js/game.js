@@ -1,9 +1,8 @@
-import { Actor, Engine, Vector, Label, Color, Font, Sound, Timer } from "excalibur";
+import { Actor, Engine, Vector, Label, Color, Font, Sound, Timer, Scene } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
-import { Player } from './player'
-import { Sans } from './sans'
-import { Bone } from './bones'
-import { HealthBar } from './healthBar.js'
+import { Start } from './scenes/startscreen.js'
+import { Settings } from './scenes/settingsscreen.js'
+
 
 
 export class Game extends Engine {
@@ -15,48 +14,20 @@ export class Game extends Engine {
   }
 
   startGame() {
+    this.addScene('settings', new Settings())
+    this.addScene('start', new Start())
+    this.addScene('start', new Start())
+    this.addScene('start', new Start())
+
+    this.goToScene('start')
+
     Resources.backgroundMusic.play(0.7)
 
+   
 
-    const background = new Actor();
-    background.graphics.use(Resources.Background.toSprite());
-    background.pos = new Vector(500, 400);
-    background.scale = new Vector(3, 3);
-
-    this.add(background);
-    let player = new Player();
-    this.add(player);
-
-    this.sans = new Sans();
-    this.add(this.sans);
-
-    let bones = new Bone();
-    this.add(bones)
-
-    new HealthBar()
-
-    const textbox = new Actor();
-    textbox.graphics.use(Resources.Text.toSprite());
-    textbox.pos = new Vector(320, 400);
-    textbox.scale = new Vector(1, 1);
-    this.add(textbox);
-
-    const timer = new Timer({
-      fcn: () => console.log('Every second'),
-      repeats: true,
-      interval: 1000,
-    })
-    
-    this.currentScene.add(timer)
-    
-    timer.start()
-
+   
   }
 
-  
-  warnSans() {
-    this.sans.warnSans()
-  }
 }
 
 new Game();

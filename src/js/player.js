@@ -19,7 +19,7 @@ export class Player extends Actor {
         this.on('collisionstart', (event) => this.hitSomething(event))
         
     }
-    
+
     hitSomething(event) {
         if (event.other instanceof Bone) {
             event.other.kill()
@@ -43,7 +43,7 @@ export class Player extends Actor {
         if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
             engine.currentScene.add(bullet)
             bullet.pos = this.pos;
-            engine.warnSans()
+            engine.currentScene.warnSans()
         }
 
         this.vel = new Vector(xspeed, yspeed)
