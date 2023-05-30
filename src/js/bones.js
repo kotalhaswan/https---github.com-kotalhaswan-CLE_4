@@ -20,6 +20,7 @@ export class Bone extends Sans{
             this.enableCapturePointer = true;
             this.on("pointerup", function (e) {
               this.kill();
+              console.log("test")
             });
             
         }
