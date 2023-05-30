@@ -3,6 +3,7 @@ import { Resources, ResourceLoader } from "./resources.js";
 import { Bone } from "./bones.js"
 import { Sans } from './sans'
 
+
 export class Bullet extends Actor{
     constructor() {
         super({

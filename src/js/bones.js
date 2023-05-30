@@ -1,8 +1,9 @@
 import { Actor, Vector, Input } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
 import { Player } from './player'
+import { Sans } from './sans'
 
-export class Bone extends Actor{
+export class Bone extends Sans{
     constructor() {
         super({
             width: Resources.Bone.width,

@@ -1,4 +1,4 @@
-import { Actor, Engine, Vector, Label, Color, Font, Sound, Timer, Scene } from "excalibur";
+import { Actor, Engine, Vector, Label, Color, Font, Sound, Timer, Scene, FontUnit } from "excalibur";
 import { Resources, ResourceLoader } from "../resources.js";
 import { Player } from '../player'
 import { Sans } from '../sans'
@@ -7,6 +7,9 @@ import { HealthBar } from '../healthBar.js'
 
 
 export class Start extends Scene {
+    score = 0
+    scoreText
+
     constructor() {
         super({ width: 640, height: 480 });
     }
@@ -20,6 +23,18 @@ export class Start extends Scene {
         this.add(background);
         let player = new Player();
         this.add(player);
+
+        this.scoreText = new Label({
+            text: 'Time start!',
+            font: new Font({
+                unit: FontUnit.Px,
+                family: 'Determination Mono Web Regular',
+                size: 28,
+                color: Color.White,
+            }),
+            pos: new Vector(250, 100)
+        })
+        this.add(this.scoreText)
 
         this.sans = new Sans();
         this.add(this.sans);
@@ -44,6 +59,16 @@ export class Start extends Scene {
         this.add(timer)
 
         timer.start()
+
+        const timer2 = new Timer({
+            fcn: () => this.updateScore(),
+            repeats: true,
+            interval: 1000,
+        })
+
+        this.add(timer2)
+
+        timer2.start()
     }
    
     spawnBones() {
@@ -57,7 +82,14 @@ export class Start extends Scene {
         
     }
 
-    onActivate(ctx) {
-        console.log("the start scene is activated")
+    updateScore() {
+        this.score++
+        let data = {
+            score : this.score
+        }
+        this.scoreText.text = `Time passed: ${this.score}`
+        localStorage.setItem("score", JSON.stringify(data))
     }
+
+    // localStorage.setItem("score", JSON.stringify(data))
 }

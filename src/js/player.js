@@ -4,7 +4,7 @@ import { Bone } from "./bones.js"
 import { Bullet } from './bullet.js'
 import { Gameover } from './scenes/gameover.js'
 
-export class Player extends Actor {
+export class Player extends Bullet {
     game;
 
     constructor() {
