@@ -16,12 +16,10 @@ export class Game extends Engine {
   startGame() {
     this.addScene('settings', new Settings())
     this.addScene('start', new Start())
-    this.addScene('start', new Start())
-    this.addScene('start', new Start())
 
-    this.goToScene('start')
+    this.goToScene('settings')
 
-    Resources.backgroundMusic.play(0.7)
+    
 
    
 

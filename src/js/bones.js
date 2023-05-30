@@ -9,8 +9,8 @@ export class Bone extends Actor{
             height: Resources.Bone.height
         });
         this.graphics.use(Resources.Bone.toSprite());
-        this.pos = new Vector(200, 200);
-        this.vel = new Vector(-10,1);
+        this.pos = new Vector(400, 200);
+        this.vel = new Vector(-35,1);
         this.scale = new Vector(0.1, 0.1);
     } 
         onInitialize(){

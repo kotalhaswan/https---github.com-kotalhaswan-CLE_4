@@ -5,10 +5,12 @@ import { Sans } from '../sans'
 import { Bone } from '../bones'
 import { HealthBar } from '../healthBar.js'
 
+
 export class Start extends Scene {
     constructor() {
         super({ width: 640, height: 480 });
     }
+    
 
     onInitialize(engine) {
         const background = new Actor();
@@ -21,7 +23,8 @@ export class Start extends Scene {
 
         this.sans = new Sans();
         this.add(this.sans);
-
+        Resources.settingMusic.stop(0.7)
+        Resources.backgroundMusic.play(0.7)
 
 
         new HealthBar()

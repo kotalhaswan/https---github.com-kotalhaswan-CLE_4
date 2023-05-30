@@ -1,9 +1,11 @@
 import { Actor, Random, Vector } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
 import { Bullet } from './bullet.js'
+import { Victory } from './scenes/victory.js'
 
 export class Sans extends Actor {
 
+    game;
     constructor() {
         super({
             width: Resources.Sans.width,
@@ -18,15 +20,18 @@ export class Sans extends Actor {
         this.random = new Random(1337)
 
     }
-    onInitialize() {
+    onInitialize(engine) {
+        this.game = engine;
         this.on('collisionstart', (event) => this.hitSomething(event))
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
+        this.game.addScene('victory', new Victory())
 
     }
     hitSomething(event) {
         if (event.other instanceof Bullet) {
             event.other.kill()
+            this.game.goToScene('victory')
         }
     }
 

@@ -2,8 +2,10 @@ import { Actor, Vector, Input } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
 import { Bone } from "./bones.js"
 import { Bullet } from './bullet.js'
+import { Gameover } from './scenes/gameover.js'
 
 export class Player extends Actor {
+    game;
 
     constructor() {
         super({
@@ -16,13 +18,16 @@ export class Player extends Actor {
     }
 
     onInitialize(engine){
+        this.game = engine;
         this.on('collisionstart', (event) => this.hitSomething(event))
+        this.game.addScene('Gameover', new Gameover())
         
     }
 
     hitSomething(event) {
         if (event.other instanceof Bone) {
             event.other.kill()
+            this.game.goToScene('Gameover')
         }
     }
 
