@@ -3,10 +3,12 @@ import { Resources, ResourceLoader } from "./resources.js";
 import { Bone } from "./bones.js"
 import { Bullet } from './bullet.js'
 import { Powerup } from './powerup.js'
+import { TopHat } from './tophat.js'
 import { Gameover } from './scenes/gameover.js'
 
 export class Player extends Actor {
     game;
+    hoedje
 
     constructor() {
         super({
@@ -16,13 +18,17 @@ export class Player extends Actor {
         this.graphics.use(Resources.Player.toSprite());
         this.pos = new Vector(20, 200);
         this.scale = new Vector(0.05, 0.05);
+
+        
     }
 
     onInitialize(engine){
         this.game = engine;
         this.on('collisionstart', (event) => this.hitSomething(event))
-        this.on('collisionstart', (event) => this.hitPower(event))
-        this.game.addScene('Gameover', new Gameover())
+        // this.on('collisionstart', (event) => this.hitPower(event))
+        this.hoedje = new TopHat()
+
+        this.addChild(this.hoedje)
 
         const timer = new Timer({
             fcn: () => this.spawnPowers(),
@@ -46,12 +52,9 @@ export class Player extends Actor {
     hitSomething(event) {
         if (event.other instanceof Bone) {
             event.other.kill()
-            this.game.goToScene('Gameover')
+            this.game.goToScene('gameover')
         }
-    }
-
-    hitPower(event) {
-    
+  
         if (event.other instanceof Powerup) {
            console.log('yummy yummy')
         }

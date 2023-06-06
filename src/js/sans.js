@@ -2,9 +2,10 @@ import { Actor, Random, Vector, Timer } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
 import { Bullet } from './bullet.js'
 import { Bone } from './bones.js'
+import { Enemy } from './enemy.js'
 import { Victory } from './scenes/victory.js'
 
-export class Sans extends Actor {
+export class Sans extends Enemy {
 
     game;
     constructor() {
@@ -26,7 +27,6 @@ export class Sans extends Actor {
         this.on('collisionstart', (event) => this.hitSomething(event))
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
-        this.game.addScene('victory', new Victory())
 
         const timer = new Timer({
             fcn: () => this.spawnBones(),
@@ -44,7 +44,7 @@ export class Sans extends Actor {
     spawnBones() {
         let bones = new Bone();
         this.game.currentScene.add(bones)
-        bones.pos = new Vector(Math.random() * 600, Math.random() * 400);
+        bones.pos = new Vector(Math.random() * 600 + 200, Math.random() * 400);
     }
 
     hitSomething(event) {

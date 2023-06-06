@@ -1,6 +1,7 @@
 import { ImageSource, Sound, Resource, Loader, Color } from "excalibur";
 import boneImage from "../images/bone.png";
 import powerImage from "../images/powerup.png";
+import tophatImage from "../images/tophat.png";
 import sansImage from "../images/sans.png";
 import textImage from "../images/textbox.png";
 import playerImage from "../images/Undertale.png";
@@ -15,6 +16,7 @@ import victoryMusic from '../images/victorysong.mp3';
 
 const Resources = {
   Bone: new ImageSource(boneImage),
+  Tophat: new ImageSource(tophatImage),
   Powerup: new ImageSource(powerImage),
   Sans: new ImageSource(sansImage),
   Text: new ImageSource(textImage),
@@ -28,7 +30,7 @@ const Resources = {
   settingMusic: new Sound(settingMusic),
   victoryMusic: new Sound(victoryMusic),
 };
-const ResourceLoader = new Loader([Resources.Bone,Resources.Powerup, Resources.Sans, Resources.Text, Resources.Player, Resources.Background, Resources.victoryImage, Resources.Bullet, Resources.backgroundMusic, Resources.gameoverMusic, Resources.settingMusic, Resources.victoryMusic]);
+const ResourceLoader = new Loader([Resources.Bone,Resources.Tophat,Resources.Powerup, Resources.Sans, Resources.Text, Resources.Player, Resources.Background, Resources.victoryImage, Resources.Bullet, Resources.backgroundMusic, Resources.gameoverMusic, Resources.settingMusic, Resources.victoryMusic]);
 ResourceLoader.logo = titleImage
 ResourceLoader.logoWidth = 625
 ResourceLoader.logoHeight = 299

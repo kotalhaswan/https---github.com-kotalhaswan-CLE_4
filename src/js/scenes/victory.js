@@ -11,6 +11,7 @@ export class Victory extends Scene {
     }
 
     onInitialize(engine) {
+        console.log(engine.score)
         console.log ("bruh i won!!!")
         Resources.backgroundMusic.stop(0.3)
         Resources.victoryMusic.play(0.3)

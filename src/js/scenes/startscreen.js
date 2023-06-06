@@ -6,6 +6,7 @@ import { HealthBar } from '../healthBar.js'
 
 
 export class Start extends Scene {
+    game;
     score = 0
     scoreText
 
@@ -15,6 +16,7 @@ export class Start extends Scene {
     
 
     onInitialize(engine) {
+        this.game = engine;
         const background = new Actor();
         background.graphics.use(Resources.Background.toSprite());
         background.pos = new Vector(500, 400);
@@ -75,6 +77,8 @@ export class Start extends Scene {
         }
         this.scoreText.text = `Time passed: ${this.score}`
         localStorage.setItem("score", JSON.stringify(data))
+
+        this.game.score = this.score
     }
 
     // localStorage.setItem("score", JSON.stringify(data))
