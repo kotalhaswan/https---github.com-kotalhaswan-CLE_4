@@ -2,7 +2,6 @@ import { Actor, Engine, Vector, Label, Color, Font, Sound, Timer, Scene, FontUni
 import { Resources, ResourceLoader } from "../resources.js";
 import { Player } from '../player'
 import { Sans } from '../sans'
-import { Bone } from '../bones'
 import { HealthBar } from '../healthBar.js'
 
 
@@ -38,8 +37,8 @@ export class Start extends Scene {
 
         this.sans = new Sans();
         this.add(this.sans);
-        Resources.settingMusic.stop(0.7)
-        Resources.backgroundMusic.play(0.7)
+        Resources.settingMusic.stop(0.3)
+        Resources.backgroundMusic.play(0.3)
 
 
         new HealthBar()
@@ -50,15 +49,7 @@ export class Start extends Scene {
         textbox.scale = new Vector(1, 1);
         this.add(textbox);
 
-        const timer = new Timer({
-            fcn: () => this.spawnBones(),
-            repeats: true,
-            interval: 1000,
-        })
-
-        this.add(timer)
-
-        timer.start()
+      
 
         const timer2 = new Timer({
             fcn: () => this.updateScore(),
@@ -70,12 +61,7 @@ export class Start extends Scene {
 
         timer2.start()
     }
-   
-    spawnBones() {
-        let bones = new Bone();
-        this.add(bones)
-        bones.pos = new Vector(Math.random() * 600, Math.random() * 400);
-    }
+ 
 
     warnSans() {
         this.sans.warnSans()

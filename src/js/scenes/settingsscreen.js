@@ -11,7 +11,7 @@ export class Settings extends Scene {
     onInitialize(engine) {
         console.log("how to play")
         this.game = engine;
-        Resources.settingMusic.play(0.7)
+        Resources.settingMusic.play(0.3)
         const background = new Actor();
         background.graphics.use(Resources.Background.toSprite());
         background.pos = new Vector(500, 400);
@@ -25,7 +25,7 @@ export class Settings extends Scene {
                 family: "Determination Mono Web Regular",
                 size: 80,
                 color: Color.White,
-                unit: FontUnit.Px
+                unit: FontUnit.Px,
             }),
         });
         let bigText2 = new Label({

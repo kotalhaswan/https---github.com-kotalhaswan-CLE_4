@@ -1,6 +1,7 @@
-import { Actor, Random, Vector } from "excalibur";
+import { Actor, Random, Vector, Timer } from "excalibur";
 import { Resources, ResourceLoader } from "./resources.js";
 import { Bullet } from './bullet.js'
+import { Bone } from './bones.js'
 import { Victory } from './scenes/victory.js'
 
 export class Sans extends Actor {
@@ -27,7 +28,25 @@ export class Sans extends Actor {
         this.pointer.useGraphicsBounds = true
         this.game.addScene('victory', new Victory())
 
+        const timer = new Timer({
+            fcn: () => this.spawnBones(),
+            repeats: true,
+            interval: 1000,
+        })
+
+        this.game.currentScene.add(timer)
+
+        timer.start()
+
     }
+
+      
+    spawnBones() {
+        let bones = new Bone();
+        this.game.currentScene.add(bones)
+        bones.pos = new Vector(Math.random() * 600, Math.random() * 400);
+    }
+
     hitSomething(event) {
         if (event.other instanceof Bullet) {
             event.other.kill()
@@ -37,18 +56,18 @@ export class Sans extends Actor {
 
     warnSans() {
         console.log("warnSans");
-        
+    
         let dodgeBullet = this.random.integer(0, 2)
 
         switch (dodgeBullet) {
             case 0:
-                this.pos = new Vector(585, 50);
+                this.actions.moveTo (new Vector(585, 50),200);
                 break;
             case 1: 
-                this.pos = new Vector(585, 200);
+                this.actions.moveTo (new Vector(585, 200),200);
                 break;
             case 2: 
-                this.pos = new Vector(585, 400);
+                this.actions.moveTo (new Vector(585, 400),200);
                 break;
             default:
                 break;

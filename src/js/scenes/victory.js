@@ -12,8 +12,8 @@ export class Victory extends Scene {
 
     onInitialize(engine) {
         console.log ("bruh i won!!!")
-        Resources.backgroundMusic.stop(0.7)
-        Resources.victoryMusic.play(0.7)
+        Resources.backgroundMusic.stop(0.3)
+        Resources.victoryMusic.play(0.3)
 
         const background = new Actor();
         background.graphics.use(Resources.Background.toSprite());

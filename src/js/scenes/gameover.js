@@ -9,8 +9,8 @@ export class Gameover extends Scene {
 
     onInitialize(engine) {
         console.log ("bruh im dead")
-        Resources.backgroundMusic.stop(0.7)
-        Resources.gameoverMusic.play(0.7)
+        Resources.backgroundMusic.stop(0.3)
+        Resources.gameoverMusic.play(0.3)
         const background = new Actor();
         background.graphics.use(Resources.Background.toSprite());
         background.pos = new Vector(500, 400);
